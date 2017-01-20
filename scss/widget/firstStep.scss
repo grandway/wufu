@@ -1,0 +1,93 @@
+﻿@import "../fn.scss";
+
+/**
+ * 首页
+ */
+
+body {
+    background-color: #0f0624;
+}
+.pos-r{
+    position: relative;
+}
+.wh100{
+    width: 100%;
+    height: 100%;
+}
+.w750 {
+    width: px(750);
+}
+
+.inMain {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+ .box{
+     position:absolute;
+     top: 0;
+     left:0;
+     width: 100%;
+     height: 100%;
+    background: rgba(0,0,0,0.85);
+ }
+.wrap{
+position: absolute;
+top: 50%;
+left:50%;
+transform: translate(-50%,-50%); 
+-webkit-transform: translate(-50%,-50%); 
+-o-transform: translate(-50%,-50%); 
+-ms-transform: translate(-50%,-50%); 
+-moz-transform: translate(-50%,-50%); 
+width: px(620);
+height: px(800);
+border-radius: px(10);
+}
+.wrap img.bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: px(10);
+}
+.wrap p:nth-of-type(1){
+    font-size: px(62);
+    color: #fbe672;
+    font-weight: bold;
+    text-align: center;
+    margin-top: px(60);
+}
+.wrap p:nth-of-type(2){
+    font-size: px(28);
+    color: #ffffac;
+    text-align: center;
+    margin-top: px(20);
+}
+.wrap div{
+    position: absolute;
+    bottom: px(70);
+    left: 50%;
+    transform: translateX(-50%); 
+    -webkit-transform: translateX(-50%); 
+    -o-transform: translateX(-50%); 
+    -ms-transform: translateX(-50%); 
+    -moz-transform: translateX(-50%); 
+    width: px(378);
+    height: px(72);
+    background: url("../../img/model-btn.png") no-repeat;
+    background-size: cover;
+}
+.wrap span{
+    width: px(34);
+    height: px(34);
+    position: absolute;
+    top: px(-50);
+    right: 0;
+}
+.wrap span img{
+    width: 100%;
+    height:100%;
+}

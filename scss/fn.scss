@@ -1,0 +1,102 @@
+$baseFontSize:75;
+
+// pixels to rems
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
+// pixels to rems
+@function px($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
+// .rem(@px){
+//   @px / @baseFontSize*1rem;
+// }
+// .px2rem(@name, @px){
+//     @{name}:@px / @baseFontSize*1rem;
+// }
+// .padding(@top,@right,@bottom,@left){
+// 	padding:@top / @baseFontSize*1rem @right / @baseFontSize*1rem @bottom / @baseFontSize*1rem @left / @baseFontSize*1rem;
+// }
+// .margin(@top,@right,@bottom,@left){
+// 	margin:@top / @baseFontSize*1rem @right / @baseFontSize*1rem @bottom / @baseFontSize*1rem @left / @baseFontSize*1rem;
+// }
+// .marginAuto(@top){
+//   margin:@top / @baseFontSize*1rem auto;
+// }
+// .marginAu(@top,@bottom){
+//   margin:@top / @baseFontSize*1rem auto @bottom / @baseFontSize*1rem;
+// }
+// .setTopLine(@c: #C7C7C7,@width:1) {
+//   & {
+//     position: relative;
+//   }
+//   &:before {
+//     content: " ";
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 1px;
+//     border-top: @width*1px solid @c;
+//   }
+//   [data-dpr="1"] &:before {
+//     transform-origin: 0 0;
+//     transform: scaleY(0.5);
+//   }
+// }
+// .setBottomLine(@c: #C7C7C7,@width:1) {
+//   & {
+//     position: relative;
+//   }
+//   &:before {
+//     content: " ";
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 1px;
+//     border-top: @width*1px solid @c;
+//   }
+//   [data-dpr="1"] &:before {
+//     transform-origin: 0 0;
+//     transform: scaleY(0.5);
+//   }
+// }
+// .setRightLine(@c: #C7C7C7,@width:1) {
+//   & {
+//     position: relative;
+//   }
+//   &:before {
+//     content: " ";
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 1px;
+//     border-top: @width*1px solid @c;
+//   }
+//   [data-dpr="1"] &:before {
+//     transform-origin: 0 0;
+//     transform: scaleY(0.5);
+//   }
+// }
+// .setLeftLine(@c: #C7C7C7,@width:1) {
+//   & {
+//     position: relative;
+//   }
+//   &:before {
+//     content: " ";
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 1px;
+//     border-top: @width*1px solid @c;
+//   }
+//   [data-dpr="1"] &:before {
+//     transform-origin: 0 0;
+//     transform: scaleY(0.5);
+//   }
+// }
