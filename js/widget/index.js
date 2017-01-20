@@ -95,10 +95,10 @@ window.wcShare = new WechatShare;
 var swiper;
 var step; //集齐五福之后走到了哪个步骤
 window.wcShare.shareData = {
-  title: "集齐五福领88元现金",
-  desc: '新年福利(每个用户限领一次)还剩4570份',
+  title: "三部领10元新手现金红包",
+  desc: '新用户首次关注中欧云公众号领10元红包。',
   img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-  link: "http://a.sharehook.pw/html/index.html" //微交易
+  link: "http://mp.weixin.qq.com/s/JWXYvRX3NJ40Daq9TyM1vQ" //微交易
 }
 window.localStorage.getItem('step') ? step = window.localStorage.getItem('step') : step = 1;
 swiper = new Swiper('.swiper-container1', {
