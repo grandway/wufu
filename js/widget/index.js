@@ -22,10 +22,10 @@ var WechatShare = function() {
             _continueSetResult: t._continueSetResult,
             _handleMessageFromWeixin: t._handleMessageFromWeixin
           };
-        // Object.defineProperty(window, "WeixinJSBridge", {
-        //     writable: !0,
-        //     enumerable: !0
-        //   }),
+        Object.defineProperty(window, "WeixinJSBridge", {
+            writable: !0,
+            enumerable: !0
+          }),
           window.WeixinJSBridge = a;
         try {
           e.setHandleMessageHookForWeixin()
