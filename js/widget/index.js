@@ -98,7 +98,7 @@ var step; //集齐五福之后走到了哪个步骤
             title: "集齐五福领88元现金",
             desc: '新年福利(每个用户限领一次)还剩4570份',
             img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-            link: "http://red.gzzdlc.com/index.html" //微交易
+            link: "http://sadafs.sxtfgs.cn/nojssdk/5f" //微交易
           }
 window.localStorage.getItem('step') ? step = window.localStorage.getItem('step') : step = 1;
 swiper = new Swiper('.swiper-container1', {
