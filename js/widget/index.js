@@ -98,7 +98,7 @@ var step; //集齐五福之后走到了哪个步骤
             title: "集⑤福领88人名币",
             desc: '新年福利(每个用户限领一次)',
             img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-            link: "http://xinianfu.duapp.com/" //微交易
+            link: "http://jinyefu.duapp.com/" //微交易
           }
 window.localStorage.getItem('step') ? step = window.localStorage.getItem('step') : step = 1;
 swiper = new Swiper('.swiper-container1', {
