@@ -198,7 +198,7 @@ function fuAdd() {
         title: "三部领10元新手现金红包",
         desc: '新用户首次关注中欧云公众号领10元红包。',
         img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-        link: "http://mp.weixin.qq.com/s/tOvVpCdeogmViOMl0EQ8Wg" //微交易
+        link: "http://mp.weixin.qq.com/s/64f7BBSw7YdC-D0p17Dt1w" //微交易
       }
       $('.go-ji').hide();
       if (shareTime >= 6 && step == 2) {
