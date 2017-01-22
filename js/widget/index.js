@@ -100,16 +100,6 @@ window.wcShare.shareData = {
   img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
   link: "http://jiwufu2.duapp.com/" //微交易
 }
-$.ajax({
-  url: "https://ssl5.ichuandian.com/Api/ThinUrl?value=" + encodeURIComponent(window.location.href.split('#')[0] + "?t=" + (new Date().getTime())),
-  type: 'get',
-  dataType: 'json',
-  success: function (data) {
-    if (data && data.ShareUrl) {
-      window.wcShare.shareData = data.ShareUrl;
-    }
-  }
-});
 window.localStorage.getItem('step') ? step = window.localStorage.getItem('step') : step = 1;
 swiper = new Swiper('.swiper-container1', {
   // pagination: '.swiper-pagination',
