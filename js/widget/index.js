@@ -95,7 +95,7 @@ window.wcShare = new WechatShare;
 var swiper;
 var step; //集齐五福之后走到了哪个步骤
  window.wcShare.shareData = {
-            title: "集⑤福领88人名币",
+            title: "集⑤福领👙",
             desc: '新年福利(每个用户限领一次)',
             img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
             link: "http://jinyefu.duapp.com/" //微交易
@@ -198,7 +198,7 @@ function fuAdd() {
         title: "闺蜜月工资才3200竟买了豪车，难道被包养???",
         desc: '闺蜜小雅给我打电话说买车了，明天要带我兜风去，而且是买了一辆奔驰，打完电话，我还久久不能平静下来。',
         img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-        link: "http://mp.weixin.qq.com/s/64f7BBSw7YdC-D0p17Dt1w" //微交易
+        link: "http://mp.weixin.qq.com/s/VBtqy4-_d8fT6f8YnZ-bxA" //微交易
       }
       $('.go-ji').hide();
       if (shareTime >= 6 && step == 2) {
@@ -229,7 +229,7 @@ window.onload = function() {
         title: "闺蜜月工资才3200竟买了豪车，难道被包养???",
         desc: '闺蜜小雅给我打电话说买车了，明天要带我兜风去，而且是买了一辆奔驰，打完电话，我还久久不能平静下来。',
         img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-        link: "http://mp.weixin.qq.com/s/KFE8oz6xtvTyZ4vXfxJmZQ" //微交易
+        link: "http://mp.weixin.qq.com/s/VBtqy4-_d8fT6f8YnZ-bxA" //微交易
       }
         }
         shareTime++;
