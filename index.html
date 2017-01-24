@@ -17,8 +17,8 @@
 
 <body id="main">
     <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
-    <img id="share_img" src="http://sa.gkdiandu.cn/static/img/red.png">
-  </div>
+        <img id="share_img" src="http://sa.gkdiandu.cn/static/img/red.png">
+    </div>
     <div class="w100m h100m mar-at pos-r" id="allBox">
         <div class="inMain">
             <div class="in-top-textBox pos-r ">
@@ -202,6 +202,7 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
+
     function isIos() {
         var e = navigator.userAgent.toLowerCase();
         return e.indexOf("iphone") >= 0 || e.indexOf("ipad") >= 0 || e.indexOf("applewebkit") >= 0
@@ -212,13 +213,20 @@
             window.onpopstate = function (e) {
                 console.log(e)
                 if (!isIos() || null !== e.state) {
-                        return void(location.href = window.shareConfig.back_material.link) 
+                    return void(location.href = window.shareConfig.back_material.link)
                     // if ("close" === t)
-                        // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
-                        
+                    // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
+
                 }
             }
     }, 50)
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b2a71fbdbeaf876dc896200bb4b4b0b7";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
 
 </html>
