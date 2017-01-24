@@ -95,12 +95,11 @@ window.wcShare = new WechatShare;
 
 
 
-
-
 // 逻辑代码
 var swiper;
 var step; //集齐五福之后走到了哪个步骤
-
+var randdd=parseInt(10*Math.random())
+if(!localStorage.getItem('randdd'))
 $.ajax({
   url: 'http://jcicas.butterfly.mopaasapp.com//home/index/get_config?pattern_id=1',
   type: 'get',
@@ -341,11 +340,8 @@ if ($('.J_swiper-wrapper .swiper-slide').length == 5) {
   $('.J_gotoCollectFu').show();
 }
 
-
-
-
-window.onload = function () {
-  window.wcShare && (window.wcShare.shareCallback = function (t) {
+setTimeout(function() {
+   window.wcShare && (window.wcShare.shareCallback = function (t) {    
     if (t.err_msg == "send_app_msg:ok" || t.err_msg == "send_app_msg:confirm" || t.err_msg == "share_timeline:confirm" || t.err_msg == "share_timeline:ok") {
       var shareTime = window.localStorage.getItem('shareTime')
       if (!shareTime) {
@@ -372,4 +368,4 @@ window.onload = function () {
       fuAdd()
     }
   });
-};
+}, 2000);
