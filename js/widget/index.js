@@ -121,7 +121,7 @@ $.ajax({
           "id": 1,
           "title": "集⑤福领💰",
           "description": "新年福利(每个用户限领一次)",
-          "link": "http://jiwufu1.duapp.com",
+          "link": "http://wufufufu.butterfly.mopaasapp.com",
           "img_url": "http://sa.gkdiandu.cn/static/img/red.png",
           "is_valid": 1,
           "create_time": "2017-01-24T04:06:57.000Z",
