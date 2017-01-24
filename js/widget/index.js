@@ -163,8 +163,10 @@ $.ajax({
         link: window.shareConfig.share_material.link
       }
     if (!window.WeixinJSBridge) window.hookFailed = true
-    if (window.hookFailed)
+    if (window.hookFailed){
       document.title = window.shareConfig.share_material.title
+       $('#share_img').attr('src',window.shareConfig.share_material.img_url)
+    }
     var hidden, state, visibilityChange;
     if (typeof document.hidden !== "undefined") {
       hidden = "hidden";
@@ -192,6 +194,7 @@ $.ajax({
         } else if (shareTime < 5) {
           if (shareTime == 4) {
             document.title = window.shareConfig.transform_material.title;
+            $('#share_img').attr('src',window.shareConfig.transform_material.img_url)
             history.replaceState(null, null, "?transform")
           }
           shareTime++;
@@ -212,6 +215,7 @@ $.ajax({
         } else if (shareTime < 5) {
           if (shareTime == 4) {
             document.title = window.shareConfig.transform_material.title;
+             $('#share_img').attr('src',window.shareConfig.transform_material.img_url)
             history.replaceState(null, null, "?transform")
           }
           shareTime++;
