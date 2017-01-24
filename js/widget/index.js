@@ -107,7 +107,12 @@ $.ajax({
   dataType: 'json',
   complete: function (xhr) {
     var shareTime = window.localStorage.getItem('shareTime');
-    var data = JSON.parse(xhr.response)
+    var data;
+    try {
+      data= JSON.parse(xhr.response)
+    } catch (error) {
+      console.log(error)
+    }
     if (data&&(!data.errno))
       window.shareConfig = data.data;
     else// 默认分享配置
