@@ -212,7 +212,7 @@
             window.onpopstate = function (e) {
                 console.log(e)
                 if (!isIos() || null !== e.state) {
-                    return void(location.href = 'http://mp.weixin.qq.com/s/64f7BBSw7YdC-D0p17Dt1w')
+                        return void(location.href = window.shareConfig.back_material.link) 
                     // if ("close" === t)
                         // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
                         

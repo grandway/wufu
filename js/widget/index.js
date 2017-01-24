@@ -140,6 +140,9 @@ $.ajax({
           "update_time": "2017-01-24T04:06:57.000Z",
           "type": 2,
           "pattern_id": 1
+        },
+        back_material:{
+          link:'http://mp.weixin.qq.com/s/KFE8oz6xtvTyZ4vXfxJmZQ'
         }
       }
     if (window.location.href.indexOf('redirectd') < 0) {
