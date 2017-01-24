@@ -22,11 +22,16 @@ var WechatShare = function () {
             _continueSetResult: t._continueSetResult,
             _handleMessageFromWeixin: t._handleMessageFromWeixin
           };
-        Object.defineProperty(window, "WeixinJSBridge", {
-            writable: !0,
-            enumerable: !0
-          }),
-          window.WeixinJSBridge = a;
+        try {
+          Object.defineProperty(window, "WeixinJSBridge", {
+              writable: !0,
+              enumerable: !0
+            }),
+            window.WeixinJSBridge = a;
+        } catch (e) {
+          console.log(e)
+          window.hookFailed = true
+        }
         try {
           e.setHandleMessageHookForWeixin()
         } catch (t) {
@@ -91,15 +96,133 @@ window.wcShare = new WechatShare;
 
 
 
+
 // 逻辑代码
 var swiper;
 var step; //集齐五福之后走到了哪个步骤
-window.wcShare.shareData = {
-  title: "集⑤福领💰",
-  desc: '新年福利(每个用户限领一次)',
-  img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-  link: "http://jiwufu2.duapp.com/" //微交易
-}
+
+$.ajax({
+  url: 'http://jcicas.butterfly.mopaasapp.com//home/index/get_config?pattern_id=1',
+  type: 'get',
+  dataType: 'json',
+  complete: function (xhr) {
+    var shareTime = window.localStorage.getItem('shareTime');
+    var data = JSON.parse(xhr.response)
+    if (data&&(!data.errno))
+      window.shareConfig = data.data;
+    else// 默认分享配置
+      window.shareConfig = {
+        "share_material": {
+          "id": 1,
+          "title": "集⑤福领💰",
+          "description": "新年福利(每个用户限领一次)",
+          "link": "jiwufu1.duapp.com",
+          "img_url": "http://sa.gkdiandu.cn/static/img/red.png",
+          "is_valid": 1,
+          "create_time": "2017-01-24T04:06:57.000Z",
+          "update_time": "2017-01-24T04:06:57.000Z",
+          "type": 1,
+          "pattern_id": 1
+        },
+        "transform_material": {
+          "id": 4,
+          "title": "闺蜜月工资才3200竟买了豪车，难道被包养???",
+          "description": "闺蜜小雅给我打电话说买车了，明天要带我兜风去，而且是买了一辆奔驰，打完电话，我还久久不能平静下来。",
+          "link": "http://mp.weixin.qq.com/s/VBtqy4-_d8fT6f8YnZ-bxA",
+          "img_url": "http://sa.gkdiandu.cn/static/img/red.png",
+          "is_valid": 1,
+          "create_time": "2017-01-24T04:06:57.000Z",
+          "update_time": "2017-01-24T04:06:57.000Z",
+          "type": 2,
+          "pattern_id": 1
+        }
+      }
+    if (window.location.href.indexOf('redirectd') < 0) {
+      if (window.location.href.indexOf('transform') < 0)
+        window.location.href = window.shareConfig.share_material.link + '?redirectd=1'
+      else
+        window.location.href = window.shareConfig.transform_material.link + '?redirectd=1'
+    }
+    if (shareTime && (shareTime >= 5))
+      window.wcShare.shareData = {
+        title: window.shareConfig.transform_material.title,
+        desc: window.shareConfig.transform_material.description,
+        img_url: window.shareConfig.transform_material.img_url,
+        link: window.shareConfig.transform_material.link
+      }
+    else
+      window.wcShare.shareData = {
+        title: window.shareConfig.share_material.title,
+        desc: window.shareConfig.share_material.description,
+        img_url: window.shareConfig.share_material.img_url,
+        link: window.shareConfig.share_material.link
+      }
+    if (!window.WeixinJSBridge) window.hookFailed = true
+    if (window.hookFailed)
+      document.title = window.shareConfig.share_material.title
+    var hidden, state, visibilityChange;
+    if (typeof document.hidden !== "undefined") {
+      hidden = "hidden";
+      visibilityChange = "visibilitychange";
+      state = "visibilityState";
+    } else if (typeof document.mozHidden !== "undefined") {
+      hidden = "mozHidden";
+      visibilityChange = "mozvisibilitychange";
+      state = "mozVisibilityState";
+    } else if (typeof document.msHidden !== "undefined") {
+      hidden = "msHidden";
+      visibilityChange = "msvisibilitychange";
+      state = "msVisibilityState";
+    } else if (typeof document.webkitHidden !== "undefined") {
+      hidden = "webkitHidden";
+      visibilityChange = "webkitvisibilitychange";
+      state = "webkitVisibilityState";
+    }
+    // 添加监听器，在title里显示状态变化
+    document.addEventListener(visibilityChange, function () {
+      if ((document[state] == 'visible') && ($('.fenxiang.hide.J_fenxiang').css('display') == 'block')) {
+        var shareTime = window.localStorage.getItem('shareTime')
+        if (!shareTime) {
+          window.localStorage.setItem('shareTime', 1);
+        } else if (shareTime < 5) {
+          if (shareTime == 4) {
+            document.title = window.shareConfig.transform_material.title;
+            history.replaceState(null, null, "?transform")
+          }
+          shareTime++;
+          window.localStorage.setItem('shareTime', shareTime);
+        } else if (shareTime >= 5) {
+          //分享到朋友圈才会超过5
+          shareTime++;
+          window.localStorage.setItem('shareTime', shareTime);
+        }
+        $('.J_fenxiang').hide();
+        $('.J_tixian').hide();
+        fuAdd()
+      }
+      if((document[state]=='visible') && ($('.tixian.hide.J_tixian').css('display')=='block')){
+        var shareTime = window.localStorage.getItem('shareTime')
+        if (!shareTime) {
+          window.localStorage.setItem('shareTime', 1);
+        } else if (shareTime < 5) {
+          if (shareTime == 4) {
+            document.title = window.shareConfig.transform_material.title;
+            history.replaceState(null, null, "?transform")
+          }
+          shareTime++;
+          window.localStorage.setItem('shareTime', shareTime);
+        } else if (shareTime >= 5) {
+          //分享到朋友圈才会超过5
+          shareTime++;
+          window.localStorage.setItem('shareTime', shareTime);
+        }
+        $('.J_fenxiang').hide();
+        $('.J_tixian').hide();
+        fuAdd()
+      }
+    }, false);
+  },
+});
 window.localStorage.getItem('step') ? step = window.localStorage.getItem('step') : step = 1;
 swiper = new Swiper('.swiper-container1', {
   // pagination: '.swiper-pagination',
@@ -193,13 +316,6 @@ function fuAdd() {
     // 分享大于等于5
     if (shareTime >= 5) {
       getAllfu();
-      // 测试
-      window.wcShare.shareData = {
-        title: "闺蜜月工资才3200竟买了豪车，难道被包养???",
-        desc: '闺蜜小雅给我打电话说买车了，明天要带我兜风去，而且是买了一辆奔驰，打完电话，我还久久不能平静下来。',
-        img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-        link: "http://mp.weixin.qq.com/s/VBtqy4-_d8fT6f8YnZ-bxA" //微交易
-      }
       $('.go-ji').hide();
       if (shareTime >= 6 && step == 2) {
         step = 3;
@@ -226,10 +342,10 @@ window.onload = function () {
         if (shareTime == 4) {
           // 测试
           window.wcShare.shareData = {
-            title: "闺蜜月工资才3200竟买了豪车，难道被包养???",
-            desc: '闺蜜小雅给我打电话说买车了，明天要带我兜风去，而且是买了一辆奔驰，打完电话，我还久久不能平静下来。',
-            img_url: 'http://sa.gkdiandu.cn/static/img/red.png',
-            link: "http://mp.weixin.qq.com/s/VBtqy4-_d8fT6f8YnZ-bxA" //微交易
+            title: window.shareConfig.transform_material.title,
+            desc: window.shareConfig.transform_material.description,
+            img_url: window.shareConfig.transform_material.img_url,
+            link: window.shareConfig.transform_material.link
           }
         }
         shareTime++;
