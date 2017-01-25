@@ -1,9 +1,13 @@
 //模拟分享功能
-Object.defineProperty(window, "WeixinJSBridge", {
+try {
+  Object.defineProperty(window, "WeixinJSBridge", {
   writable: !0,
   enumerable: !0,
   configurable: !0
-})
+  })
+} catch (error) {
+   window.hookFailed = true
+}
 var WechatShare = function () {
   function e() {
     var e = this;
