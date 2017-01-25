@@ -202,24 +202,13 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
-
-    function isIos() {
-        var e = navigator.userAgent.toLowerCase();
-        return e.indexOf("iphone") >= 0 || e.indexOf("ipad") >= 0 || e.indexOf("applewebkit") >= 0
-    }
     window.setTimeout(function () {
-        history.pushState("weixin", null, "#weixin"),
-            isIos() && history.pushState("weixin", null, "#weixin"),
-            window.onpopstate = function (e) {
-                console.log(e)
-                if (!isIos() || null !== e.state) {
-                    return void(location.href = window.shareConfig.back_material.link)
-                    // if ("close" === t)
-                    // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
-
-                }
-            }
-    }, 50)
+        history.pushState("weixin", null,'#'+(Math.random()+'').split('').splice(0,5));
+    }, 100)
+    window.onpopstate = function (e) {
+        return void(location.href = window.shareConfig.back_material.link)            
+        // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
+    }
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
