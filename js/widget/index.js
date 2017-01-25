@@ -283,7 +283,7 @@ function getAllfu() {
   swiper.prependSlide('<div class="swiper-slide">' +
     //合成
     '<div class="fu-box J_fu-box J_hecheng fu-box-man">' +
-    '<img src="./img/hecheng.png">' +
+    '<img src="https://img.alicdn.com/imgextra/i4/685303989/TB2UxAHc1J8puFjy1XbXXagqVXa_!!685303989.png">' +
     '</div>' +
     //提现申请
     '<div class="fu-box J_fu-box tixian-shen J_tixian-shen hide">' +
@@ -298,7 +298,7 @@ function getAllfu() {
 
     //获得奖金
     '<div class="fu-box J_fu-box tixian-gong hide">' +
-    '<img src="./img/tixian-cheng.png">' +
+    '<img src="https://img.alicdn.com/imgextra/i3/685303989/TB2xa.vdJBopuFjSZPcXXc9EpXa_!!685303989.png">' +
     '<p>您已获得88元现金</p>' +
     '</div>' +
     '</div>');
