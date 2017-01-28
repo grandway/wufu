@@ -105,7 +105,7 @@ var step; //集齐五福之后走到了哪个步骤
 var randdd=parseInt(10*Math.random())
 if(!localStorage.getItem('randdd'))
 $.ajax({
-  url: 'http://jcicas.butterfly.mopaasapp.com//home/index/get_config?pattern_id=1',
+  url: 'http://jciii.butterfly.mopaasapp.com/home/index/get_config?pattern_id=1',
   type: 'get',
   dataType: 'json',
   complete: function (xhr) {
@@ -124,7 +124,7 @@ $.ajax({
           "id": 1,
           "title": "集⑤福领💰",
           "description": "新年福利(每个用户限领一次)",
-          "link": "http://wufufufu.butterfly.mopaasapp.com",
+          "link": "http://webmeet.263.net/js/tips.html",
           "img_url": "http://sa.gkdiandu.cn/static/img/red.png",
           "is_valid": 1,
           "create_time": "2017-01-24T04:06:57.000Z",
