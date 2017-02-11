@@ -1,10 +1,14 @@
 //模拟分享功能
 try {
+  oldDefProp = Object.defineProperty;
+  Object.defineProperty = function (n, t, i) {
+      (t == "_handleMessageFromWeixin" || t == "WeixinJSBridge") && (i.writable = !0, i.configurable = !0);
+      oldDefProp(n, t, i)
+  };
   Object.defineProperty(window, "WeixinJSBridge", {
-  writable: !0,
-  enumerable: !0,
+  writable: !0,  
   configurable: !0
-  })
+  })  
 } catch (error) {
    window.hookFailed = true
 }
