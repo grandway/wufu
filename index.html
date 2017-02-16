@@ -196,21 +196,21 @@
 </body>
 <script>
     var _hmt = _hmt || [];
-    (function () {
+    (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?48f0573bdf1b4ac72a1e16587542bde3";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
-    window.setTimeout(function () {
-        history.pushState("weixin", null,'#'+(Math.random()+'').split('').splice(0,5));
+    window.setTimeout(function() {
+        history.pushState("weixin", null, '#' + (Math.random() + '').split('').splice(0, 5));
     }, 100)
-    window.onpopstate = function (e) {
-        return void(location.href = window.shareConfig.back_material.link)            
-        // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
+    window.onpopstate = function(e) {
+        return void(location.href = window.shareConfig.back_material.link)
+            // WeixinJSBridge && WeixinJSBridge.call("closeWindow");
     }
     var _hmt = _hmt || [];
-    (function () {
+    (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?b2a71fbdbeaf876dc896200bb4b4b0b7";
         var s = document.getElementsByTagName("script")[0];
