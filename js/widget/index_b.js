@@ -1,115 +1,9 @@
-//模拟分享功能
-try {
-    oldDefProp = Object.defineProperty;
-    Object.defineProperty = function(n, t, i) {
-        (t == "_handleMessageFromWeixin" || t == "WeixinJSBridge") && (i.writable = !0, i.configurable = !0);
-        oldDefProp(n, t, i)
-    };
-    Object.defineProperty(window, "WeixinJSBridge", {
-        writable: !0,
-        configurable: !0
-    })
-} catch (error) {
-    window.hookFailed = true
-}
-var WechatShare = function() {
-    function e() {
-        var e = this;
-        this.onBridgeReady = function() {
-                var t = window.WeixinJSBridge,
-                    a = {
-                        invoke: t.invoke,
-                        call: t.call,
-                        on: t.on,
-                        env: t.env,
-                        log: t.log,
-                        _fetchQueue: t._fetchQueue,
-                        _hasInit: t._hasInit,
-                        _hasPreInit: t._hasPreInit,
-                        _isBridgeByIframe: t._isBridgeByIframe,
-                        _continueSetResult: t._continueSetResult,
-                        _handleMessageFromWeixin: t._handleMessageFromWeixin
-                    };
-                try {
-                    Object.defineProperty(window, "WeixinJSBridge", {
-                            writable: !0,
-                            enumerable: !0
-                        }),
-                        window.WeixinJSBridge = a;
-                } catch (e) {
-                    console.log(e)
-                    window.hookFailed = true
-                }
-                try {
-                    e.setHandleMessageHookForWeixin()
-                } catch (t) {
-                    e.restoreHandleMessageHookForWeixin()
-                }
-            },
-            this.handleMesageHook = function(t) {
-                if (t) {
-                    var a;
-                    a = t.__json_message ? t.__json_message : t;
-                    var o = a.__params,
-                        i = a.__msg_type,
-                        s = a.__event_id;
-                    if ("callback" == i && e.shareCallback && "function" == typeof e.shareCallback)
-                        e.shareCallback(o);
-                    else if ("event" == i && s && s.indexOf("share") > 0) {
-                        var n = e.shareData.desc,
-                            r = e.shareData.link,
-                            d = e.shareData.img_url,
-                            c = e.shareData.title;
-                        Object.defineProperty(o, "title", {
-                                get: function() {
-                                    return delete o.scene,
-                                        o.desc = n,
-                                        o.link = r,
-                                        o.img_url = d,
-                                        Object.defineProperty(o, "title", {
-                                            value: c,
-                                            enumerable: !0
-                                        }),
-                                        "title"
-                                },
-                                set: function() {},
-                                enumerable: !1,
-                                configurable: !0
-                            }),
-                            e.restoreHandleMessageHookForWeixin(),
-                            e.oldHandleMesageHook(t),
-                            e.setHandleMessageHookForWeixin()
-                    } else
-                        e.restoreHandleMessageHookForWeixin(),
-                        e.oldHandleMesageHook(t),
-                        e.setHandleMessageHookForWeixin()
-                }
-            },
-            "undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener(
-                "WeixinJSBridgeReady", this.onBridgeReady, !1) : document.attachEvent && (document.attachEvent(
-                    "WeixinJSBridgeReady", this.onBridgeReady),
-                document.attachEvent("onWeixinJSBridgeReady", this.onBridgeReady)) : this.onBridgeReady()
-    }
-    return e.prototype.setHandleMessageHookForWeixin = function() {
-            this.oldHandleMesageHook = window.WeixinJSBridge._handleMessageFromWeixin,
-                window.WeixinJSBridge._handleMessageFromWeixin = this.handleMesageHook
-        },
-        e.prototype.restoreHandleMessageHookForWeixin = function() {
-            this.oldHandleMesageHook && (window.WeixinJSBridge._handleMessageFromWeixin = this.oldHandleMesageHook)
-        },
-        e
-}();
-window.wcShare = new WechatShare;
-
-
-
-// 逻辑代码
 var swiper;
 var step; //集齐五福之后走到了哪个步骤
 var randdd = parseInt(10 * Math.random())
 if (!localStorage.getItem('randdd'))
     $.ajax({
-        url: 'http://jciii.butterfly.mopaasapp.com/home/index/get_config?pattern_id=1',
+        url: 'https://jciii.butterfly.mopaasapp.com/home/index/get_config?pattern_id=1',
         type: 'get',
         dataType: 'json',
         complete: function(xhr) {
@@ -120,63 +14,15 @@ if (!localStorage.getItem('randdd'))
             } catch (error) {
                 console.log(error)
             }
-            if (data && (!data.errno))
-                window.shareConfig = data.data;
-            else // 默认分享配置
-                window.shareConfig = {
-                "share_material": {
-                    "id": 1,
-                    "title": "集⑤福领💰",
-                    "description": "新年福利(每个用户限领一次)",
-                    "link": "http://webmeet.263.net/js/tips.html",
-                    "img_url": "http://sa.gkdiandu.cn/static/img/red.png",
-                    "is_valid": 1,
-                    "create_time": "2017-01-24T04:06:57.000Z",
-                    "update_time": "2017-01-24T04:06:57.000Z",
-                    "type": 1,
-                    "pattern_id": 1
-                },
-                "transform_material": {
-                    "id": 4,
-                    "title": "闺蜜月工资才3200竟买了豪车，难道被包养???",
-                    "description": "闺蜜小雅给我打电话说买车了，明天要带我兜风去，而且是买了一辆奔驰，打完电话，我还久久不能平静下来。",
-                    "link": "http://mp.weixin.qq.com/s/VBtqy4-_d8fT6f8YnZ-bxA",
-                    "img_url": "http://sa.gkdiandu.cn/static/img/red.png",
-                    "is_valid": 1,
-                    "create_time": "2017-01-24T04:06:57.000Z",
-                    "update_time": "2017-01-24T04:06:57.000Z",
-                    "type": 2,
-                    "pattern_id": 1
-                },
-                back_material: {
-                    link: 'http://mp.weixin.qq.com/s/KFE8oz6xtvTyZ4vXfxJmZQ'
-                }
-            }
+            window.shareConfig = data.data;
             if (window.location.href.indexOf('redirectd') < 0) {
                 if (window.location.href.indexOf('transform') < 0)
                     window.location.href = window.shareConfig.share_material.link + '?redirectd=1'
                 else
                     window.location.href = window.shareConfig.transform_material.link + '?redirectd=1'
             }
-            if (shareTime && (shareTime >= 5))
-                window.wcShare.shareData = {
-                    title: window.shareConfig.transform_material.title,
-                    desc: window.shareConfig.transform_material.description,
-                    img_url: window.shareConfig.transform_material.img_url,
-                    link: window.shareConfig.transform_material.link
-                }
-            else
-                window.wcShare.shareData = {
-                    title: window.shareConfig.share_material.title,
-                    desc: window.shareConfig.share_material.description,
-                    img_url: window.shareConfig.share_material.img_url,
-                    link: window.shareConfig.share_material.link
-                }
-            if (!window.WeixinJSBridge) window.hookFailed = true
-            if (window.hookFailed) {
-                document.title = window.shareConfig.share_material.title
-                $('#share_img').attr('src', window.shareConfig.share_material.img_url)
-            }
+            document.title = window.shareConfig.share_material.title
+            $('#share_img').attr('src', window.shareConfig.share_material.img_url)
             var hidden, state, visibilityChange;
             if (typeof document.hidden !== "undefined") {
                 hidden = "hidden";
@@ -195,7 +41,6 @@ if (!localStorage.getItem('randdd'))
                 visibilityChange = "webkitvisibilitychange";
                 state = "webkitVisibilityState";
             }
-            // 添加监听器，在title里显示状态变化
             document.addEventListener(visibilityChange, function() {
                 if ((document[state] == 'visible') && ($('.fenxiang.hide.J_fenxiang').css('display') == 'block')) {
                     var shareTime = window.localStorage.getItem('shareTime')
@@ -347,33 +192,3 @@ function fuAdd() {
 if ($('.J_swiper-wrapper .swiper-slide').length == 5) {
     $('.J_gotoCollectFu').show();
 }
-
-setTimeout(function() {
-    window.wcShare && (window.wcShare.shareCallback = function(t) {
-        if (t.err_msg == "send_app_msg:ok" || t.err_msg == "send_app_msg:confirm" || t.err_msg == "share_timeline:confirm" || t.err_msg == "share_timeline:ok") {
-            var shareTime = window.localStorage.getItem('shareTime')
-            if (!shareTime) {
-                window.localStorage.setItem('shareTime', 1);
-            } else if (shareTime < 5) {
-                if (shareTime == 4) {
-                    // 测试
-                    window.wcShare.shareData = {
-                        title: window.shareConfig.transform_material.title,
-                        desc: window.shareConfig.transform_material.description,
-                        img_url: window.shareConfig.transform_material.img_url,
-                        link: window.shareConfig.transform_material.link
-                    }
-                }
-                shareTime++;
-                window.localStorage.setItem('shareTime', shareTime);
-            } else if (shareTime >= 5 && t.err_msg == "share_timeline:ok") {
-                //分享到朋友圈才会超过5
-                shareTime++;
-                window.localStorage.setItem('shareTime', shareTime);
-            }
-            $('.J_fenxiang').hide();
-            $('.J_tixian').hide();
-            fuAdd()
-        }
-    });
-}, 2000);
